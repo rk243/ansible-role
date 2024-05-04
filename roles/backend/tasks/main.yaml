@@ -60,7 +60,7 @@
     name:
       - PyMySQL
       - cryptography
-    executed: pip3.9
+    executable: pip3.9
           
 # provided in loop
 # - name: install mysql
