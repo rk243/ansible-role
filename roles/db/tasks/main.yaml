@@ -12,8 +12,8 @@
 - name: python dependencies for mysql
   ansible.builtin.pip:
     name: 
-    - PyMySQL
-    - cryptography
+      - PyMySQL
+      - cryptography
     executable: pip3.6
 
 - name: check db connections
