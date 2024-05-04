@@ -54,11 +54,11 @@
   ansible.builtin.service:
     daemon-reload: true
 
-- name: systemctl start and enabled service
-  ansible.builtin.service:
-    name: backend
-    state: started
-    enabled: yes
+# - name: systemctl start and enabled service
+#   ansible.builtin.service:
+#     name: backend
+#     state: started
+#     enabled: yes
 
 - name: installed mysql python dependencies
   ansible.builtin.pip:
