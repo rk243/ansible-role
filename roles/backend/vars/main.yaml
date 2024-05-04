@@ -2,5 +2,5 @@ login_user: root
 login_host: backend.jeeta.online
 login_password: ExpenseApp@1
 DB_HOST: db.jeeta.online
-app_loation: /app
+app_location: /app
 component: backend
