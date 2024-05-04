@@ -1,34 +1,34 @@
 - name: install mysql-server
-    ansible.builtin.dnf:
-      name: mysql-server
-      state: latest
+  ansible.builtin.dnf:
+    name: mysql-server
+    state: latest
 
-  - name: enable and start mysqld
-    ansible.builtin,service:
-      name: mysqld
-      state: started
-      enabled: yes
+- name: enable and start mysqld
+  ansible.builtin,service:
+    name: mysqld
+    state: started
+    enabled: yes
 
-  - name: python dependencies for mysql
-    ansible.builtin.pip:
-      name: 
-      - PyMySQL
-      - cryptography
-      executable: pip3.6
+- name: python dependencies for mysql
+  ansible.builtin.pip:
+    name: 
+    - PyMySQL
+    - cryptography
+    executable: pip3.6
 
-  - name: check db connections
-    community.mysql.mysql_info:
-      login_user: root
-      login_password: "{{mysql_root_password}}"
-      login_host: "{{login_host}}"
-      filter: version
-    ignore_error: yes
-    register: mysql_connection_output
+- name: check db connections
+  community.mysql.mysql_info:
+    login_user: root
+    login_password: "{{mysql_root_password}}"
+    login_host: "{{login_host}}"
+    filter: version
+  ignore_error: yes
+  register: mysql_connection_output
 
-  - name: print mysql connection output
-    ansible.builtin.debug:
-      msg: "output: {{mysql_connection_output}}"
+- name: print mysql connection output
+  ansible.builtin.debug:
+    msg: "output: {{mysql_connection_output}}"
 
-  - name: setup root password
-    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
-    when: mysql_connection_output.failed is true
+- name: setup root password
+  ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+  when: mysql_connection_output.failed is true
